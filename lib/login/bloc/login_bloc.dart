@@ -1,6 +1,8 @@
 import 'dart:async';
 
-class Bloc {
+import 'validator.dart';
+
+class Bloc with Validator {
   final _emailController = StreamController<String>();
   final _passwordController = StreamController<String>();
 
@@ -12,26 +14,6 @@ class Bloc {
   Stream<String> get email => _emailController.stream.transform(validateEmail);
   Stream<String> get password =>
       _passwordController.stream.transform(validatePassword);
-
-  final validateEmail = StreamTransformer<String, String>.fromHandlers(
-    handleData: (email, sink) {
-      if (email.contains('@')) {
-        sink.add(email);
-      } else {
-        sink.addError('Enter a valid email');
-      }
-    },
-  );
-
-  final validatePassword = StreamTransformer<String, String>.fromHandlers(
-    handleData: (password, sink) {
-      if (password.length > 6) {
-        sink.add(password);
-      } else {
-        sink.addError('Invalid password length');
-      }
-    },
-  );
 
   dispose() {
     _emailController.close();
