@@ -10,5 +10,7 @@ class Provider extends InheritedWidget {
   bool updateShouldNotify(oldWidget) => true;
 
   static Bloc of(BuildContext context) =>
-      (context.getElementForInheritedWidgetOfExactType() as Provider).bloc;
+      ((context.getElementForInheritedWidgetOfExactType() ??
+              Provider(child: const SizedBox())) as Provider)
+          .bloc;
 }

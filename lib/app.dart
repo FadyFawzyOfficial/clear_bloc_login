@@ -1,13 +1,17 @@
-import 'package:clear_bloc_login/login/view/login_screen.dart';
 import 'package:flutter/material.dart';
+
+import 'login/bloc/login_provider.dart';
+import 'login/view/login_screen.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: LoginScreen(),
+    return Provider(
+      child: const MaterialApp(
+        home: LoginScreen(),
+      ),
     );
   }
 }

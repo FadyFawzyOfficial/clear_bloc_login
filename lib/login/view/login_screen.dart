@@ -1,5 +1,6 @@
-import 'package:clear_bloc_login/login/bloc/login_bloc.dart';
 import 'package:flutter/material.dart';
+
+import '../bloc/login_provider.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -29,6 +30,7 @@ class EmailTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = Provider.of(context);
     return StreamBuilder<String>(
       stream: bloc.email,
       builder: (context, snapshot) {
@@ -51,6 +53,7 @@ class PasswordTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = Provider.of(context);
     return StreamBuilder<String>(
       stream: bloc.password,
       builder: (context, snapshot) {
